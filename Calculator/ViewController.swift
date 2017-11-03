@@ -22,19 +22,16 @@ class ViewController: UIViewController {
     let nf = NumberFormatter()
     
     var store: (Double, Double) = (0, 0)
-    
-    
     var math : MathType = .none
-    @IBAction func Clear(_ sender: Any)
-    {
+    
+    @IBAction func Clear(_ sender: Any) {
         label.text = "0"
         store = (0, 0)
     }
 
     @IBOutlet weak var label: UITextField!
     
-    @IBAction func addition(_ sender: Any)
-    {
+    @IBAction func addition(_ sender: Any) {
         changed = true
         if let text = label.text {
             store = (Double(text)!, 0)
@@ -43,8 +40,7 @@ class ViewController: UIViewController {
         math = .add
     }
     
-    @IBAction func multiply(_ sender: Any)
-    {
+    @IBAction func multiply(_ sender: Any) {
         changed = true
         
         if let text = label.text {
@@ -54,8 +50,7 @@ class ViewController: UIViewController {
         math = .multiply
     }
     
-    @IBAction func divide(_ sender: Any)
-    {
+    @IBAction func divide(_ sender: Any) {
         changed = true
         if let text = label.text {
             let number = nf.number(from: text)
@@ -65,8 +60,7 @@ class ViewController: UIViewController {
         math = .divide
     }
     
-    @IBAction func minus(_ sender: Any)
-    {
+    @IBAction func minus(_ sender: Any) {
         changed = true
 
         if let text = label.text {
@@ -76,8 +70,7 @@ class ViewController: UIViewController {
         math = .minus
     }
     
-    @IBAction func Dot(_ sender: Any)
-    {
+    @IBAction func Dot(_ sender: Any) {
         if let text = label.text {
             if (text.contains(".")){
                 label.text = text
@@ -87,8 +80,7 @@ class ViewController: UIViewController {
         }
     }
     
-    @IBAction func total(_ sender: Any)
-    {
+    @IBAction func total(_ sender: Any) {
         if let text = label.text {
             if changed == true {
                 store = (store.0, Double(nf.number(from: text)!))
@@ -127,20 +119,15 @@ class ViewController: UIViewController {
         
     }
     
-    @IBAction func Numbers(_ sender: UIButton)
-    {
+    @IBAction func Numbers(_ sender: UIButton) {
         if let text = label.text {
             if text == "0" {
                 label.text = ""
             }
         }
-    label.text = label.text! + String(sender.tag-1)
-    }
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+    
+        label.text = label.text! + String(sender.tag-1)
     }
 
- 
 }
 
